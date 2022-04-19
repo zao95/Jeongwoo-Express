@@ -8,7 +8,7 @@ This is the Express part of the service composed of MERN stack.
 
     ```
     docker build -t express -f ./DockerFile .
-    docker run --name -d -p 5000:5000 express
+    docker run --name express -d -p 5000:5000 express
     ```
 
 ## Environment
