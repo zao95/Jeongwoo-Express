@@ -1,4 +1,4 @@
-# Jeongwoo Next
+# Jeongwoo Express
 
 This is the Express part of the service composed of MERN stack.
 
