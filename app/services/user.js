@@ -55,7 +55,46 @@ export default function UserService(){
                 }
             })
             
+        },// login 
+        logout(){
+            req.logout()
+            res.json({msg: 'LOGOUT'})
         },
+        checkDuplicateUserid(req, res) {
+            User
+                .findById({userid: req.body.userid})
+                .exec((err, user) => {
+                    if (err) {
+                        res
+                            .status(500)
+                            .send({message: err});
+                        return;
+                    }
+                    if (user) {
+                        res
+                            .status(400)
+                            .send({message: "ID가 이미 존재합니다"});
+                        return;
+                    }
+                })
+        },
+        getUserById(req, res){
+            const userid = req.body.userid
+            User
+                .findById({userid: userid})
+                .exec((_err, user) => {
+                    res.status(200).json(user)
+                })
+        },
+        getUsers(_req, res){
+            User.find().exec(
+                (err,users)=>{
+                    res.status(200).json(users)
+                }
+            )
+        }
+        
+        
 
     }
 }
